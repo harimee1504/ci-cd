@@ -14,10 +14,14 @@ module.exports = (config) => {
             {
               loader: 'ts-loader',
               options: {
-                transpileOnly: true
+                transpileOnly: true,
+                compilerOptions: {
+                  jsx: 'react'
+                }
               }
             }
-          ]
+          ],
+          exclude: /node_modules/
         }
       ]
     }
