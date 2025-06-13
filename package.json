@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@clerk/clerk-react": "^5.11.0",
     "@module-federation/nextjs-mf": "^6.0.5",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
@@ -52,5 +53,5 @@
   "browser": {
     "crypto": false,
     "path": false
-}
+  }
 }

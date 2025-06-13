@@ -9,7 +9,24 @@ interface ReactCounterProps {
 
 const ReactCounter: React.FC<ReactCounterProps> = ({ initialCount = 0 }) => {
   const [count, setCount] = useState(initialCount);
-  const [page, setPage] = useState();
+  const [PageComponent, setPageComponent] = useState<any>(null);
+
+  const navigationData = {
+    navMain: [
+      {
+        title: "Commits",
+        url: "#",
+        icon: undefined,
+        isActive: true,
+        items: [
+          {
+            title: "Build",
+            url: () => {}
+          }
+        ]
+      }
+    ]
+  };
 
   useEffect(() => {
     injectScript({
@@ -18,7 +35,7 @@ const ReactCounter: React.FC<ReactCounterProps> = ({ initialCount = 0 }) => {
     })
       .then((container: any) => container.get('./wrapper'))
       .then((loader: any) => {
-        setPage(loader().default);
+        setPageComponent(() => loader().default);
       });
   }, []);
 
@@ -28,7 +45,9 @@ const ReactCounter: React.FC<ReactCounterProps> = ({ initialCount = 0 }) => {
       <p>Current count: {count}</p>
       <button onClick={() => setCount(count + 1)}>Increment</button>
       <button onClick={() => setCount(count - 1)} style={{ marginLeft: '10px' }}>Decrement</button>
-      <div className="rounded">{page}</div>
+      <div className="rounded">
+        {PageComponent && <PageComponent count={navigationData} ><div>Hello</div></PageComponent>}
+      </div>
     </div>
   );
 };
