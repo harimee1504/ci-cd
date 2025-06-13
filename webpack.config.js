@@ -4,7 +4,11 @@ const { merge } = require('webpack-merge');
 module.exports = (config) => {
   return merge(config, {
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx']
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      alias: {
+        "crypto": "crypto-browserify",
+        "path": "path-browserify"
+      }
     },
     module: {
       rules: [

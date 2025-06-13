@@ -9,5 +9,15 @@
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    // Required by some npm packages
+    window.process = { browser: true, env: { ENVIRONMENT: 'BROWSER' } };
+</script>
+  <script>
+    if (global === undefined) {
+      var global = window;
+    }
+  </script>
+  <script src="https://auth-layout.vercel.app/_next/static/chunks/remoteEntry.js"></script>
 </body>
 </html>
